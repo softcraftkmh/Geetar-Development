@@ -88,7 +88,12 @@ export class SellVouchers extends Component {
 
     this.setState({ isLoading: true });
 
-    const { expectedData } = (await api.postSellVouchers({ sellItems })).data;
+    const { expectedData } = (
+      await api.postSellVouchers({
+        sellItems,
+        discount: parseInt(this.state.discount)
+      })
+    ).data;
     const { status, message, sellVouchers } = expectedData;
     if (status === "success") {
       this.setState({
@@ -219,6 +224,7 @@ export class SellVouchers extends Component {
               value={this.state.discount}
               onChange={this.onChangeDiscount()}
               label="Discount"
+              type="number"
             ></TextField>
           </Grid>
         </Grid>

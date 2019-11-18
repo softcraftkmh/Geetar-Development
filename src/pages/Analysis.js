@@ -102,12 +102,12 @@ export class analysis extends Component {
                         accessor: "quantity"
                       },
                       {
-                        Header: "Buy Price",
-                        accessor: "itemBuyPrice"
+                        Header: "Sell Price",
+                        accessor: "itemSellPrice"
                       },
                       {
                         Header: "Total Price",
-                        accessor: "itemBuyTotalPrice"
+                        accessor: "itemSellTotalPrice"
                       }
                     ]}
                   />
@@ -118,6 +118,7 @@ export class analysis extends Component {
                   Header: "Total Price",
                   accessor: "totalPrice"
                 },
+                { Header: "Discount", accessor: "discount" },
                 {
                   Header: "Date",
                   accessor: "createdAt",

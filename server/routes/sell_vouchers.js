@@ -77,6 +77,7 @@ module.exports = app => {
     }
     newSellVoucher.totalPrice =
       parseInt(voucherTotalPrice) - parseInt(discount);
+    newSellVoucher.discount = parseInt(discount);
     newSellVoucher.sellItems = newSellItems;
 
     try {
@@ -88,7 +89,7 @@ module.exports = app => {
       }
       await newSellVoucher.save();
     } catch (error) {
-      res.json({
+      return res.json({
         ...FAIL_TO_CREATE_NEW_ITEM_STATUS,
         error
       });
