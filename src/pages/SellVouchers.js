@@ -21,7 +21,8 @@ export class SellVouchers extends Component {
     snackBarMessage: "",
     itemsAutoComplete: [],
     itemSells: [],
-    sellVouchers: []
+    sellVouchers: [],
+    discount: 0
   };
 
   handleClose = (event, reason) => {
@@ -46,6 +47,11 @@ export class SellVouchers extends Component {
     this.setState({
       [name]: event.target.value
     });
+  };
+
+  onChangeDiscount = () => event => {
+    const { value } = event.target;
+    this.setState({ discount: value });
   };
 
   getTotalPrice = () => {
@@ -203,6 +209,17 @@ export class SellVouchers extends Component {
           <Grid item xs={10} />
           <Grid item xs={2}>
             Total Price: {this.getTotalPrice()} Kyats
+          </Grid>
+        </Grid>
+        <div style={{ marginTop: 32 }} />
+        <Grid container>
+          <Grid item xs={10}></Grid>
+          <Grid item xs={2}>
+            <TextField
+              value={this.state.discount}
+              onChange={this.onChangeDiscount()}
+              label="Discount"
+            ></TextField>
           </Grid>
         </Grid>
         <div style={{ marginTop: 32 }} />

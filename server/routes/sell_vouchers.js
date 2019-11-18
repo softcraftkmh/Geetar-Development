@@ -45,7 +45,7 @@ module.exports = app => {
     const foundItems = [];
     let voucherTotalPrice = 0;
 
-    const { sellItems } = req.body;
+    const { sellItems, discount } = req.body;
     if (!sellItems && sellItems.length !== 0) {
       return res.json({ ...EMPTY_STATUS });
     }
@@ -75,7 +75,8 @@ module.exports = app => {
       newSellItems.push(newSellItem);
       foundItems.push(foundItem);
     }
-    newSellVoucher.totalPrice = voucherTotalPrice;
+    newSellVoucher.totalPrice =
+      parseInt(voucherTotalPrice) - parseInt(discount);
     newSellVoucher.sellItems = newSellItems;
 
     try {
